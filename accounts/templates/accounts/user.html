@@ -1,0 +1,44 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block loadcss %}
+<link rel="stylesheet" href="{% static 'css/accounts/status.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'accounts/status.html' %}
+
+<br>
+
+<div class="row mx-2">
+    <div class="col">
+        <div class="card card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Date Ordered</th>
+                        <th>Status</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{order.product.name}}</td>
+                        <td>{{order.product.category}}</td>
+                        <td>{{order.date_created}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.note}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
